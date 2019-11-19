@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/6bfa854a4c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-head">
+                <h2>Generate Secure Password</h2>
+            </div>
+            <div class="card-body">
+                <div class="area-result">
+                    <button id="actionbutton" class="cta"><span class="fas fa-redo-alt"></span></button>
+                    <button id="copybutton"><span class="far fa-clone"></span></button>
+                    <div class="result" id="result">&nbsp;</div>
+                    <input type="text" class="copytext" id="copytext">
+                </div>
+                <div class="area-options">
+                    <label for="lowercase"><input type="checkbox" id="lowercase" checked> Lowercase</label>
+                    <label for="uppercase"><input type="checkbox" id="uppercase" checked> Uppercase</label>
+                    <label for="numbers"><input type="checkbox" id="numbers" checked> Numbers</label>
+                    <label for="punctuation"><input type="checkbox" id="punctuation" checked> Pucntuation</label>
+                </div>
+                <div class="area-length">
+                    <label for="length">Length: <input type="number" id="length" value="20"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="toast">The password has been copied.</div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
