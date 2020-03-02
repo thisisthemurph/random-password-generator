@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display|Ubuntu+Mono:400,700&display=swap');
+
+$heading-font: 'Major Mono Display', mono;
+$main-font: 'Ubuntu Mono', mono;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $main-font;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    height: -webkit-fill-available;
+
+    .card-head {
+        line-height: 3em;
+
+        h1 {
+            font-family: $heading-font;
+            text-align: center;
+        }
+
+        .area-result {
+            padding: 1em;
+
+            .result {
+                font-family: $main-font;
+                font-size: 2em;
+                word-wrap: break-word;
+                border-bottom: 1px solid black;
+
+                .number {
+                    color: red;
+                }
+
+                .punctuation {
+                    color: blue;
+                }
+            }
+
+            .copytext {
+                // We don't want to see this,
+                // but we do want to interact with it
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+        }
+    }
+
+    .card-body {
+        font-size: 1.4em;
+
+        .area-options {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 1em;
+
+            .checkbox {
+                flex-basis: 0;
+                flex-grow: 1;
+                width: 50%;
+
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                padding: 0.2em 0.2em 0.2em 0;
+
+                input[type=checkbox] {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                label {
+                    padding-left: .1em;
+                }
+            }
+        }
+
+        .area-length {
+            padding: 1em;
+
+            input[type=range] {
+                appearance: none;
+                width: 100%;
+                background-color: #eeeeee;
+                cursor: pointer;
+
+                margin: .8em 0;
+
+                // opacity: 0.7;
+                // transition: opacity .2s ease-in-out;
+
+                &::-webkit-slider-thumb {
+                    appearance: none;
+                    width: 25px;
+                    height: 25px;
+                    background-color: rgba(16, 73, 179, 0.952);
+                    cursor: col-resize;
+                }
+
+                &::-moz-range-thumb {
+                    appearance: none;
+                    width: 25px;
+                    height: 25px;
+                    background-color: rgba(16, 73, 179, 0.952);
+                    cursor: col-resize;
+                }
+
+                // &:hover {
+                //     opacity: 1;
+                // }
+            }
+        }
+
+        .area-buttons {
+            display: flex;
+            justify-content: space-around;
+
+            button {
+                appearance: none;
+                border: none;
+                padding: 1em;
+                width: 50%;
+            }
+        }
+    }
+}
+
+.toast {
+    display: none;
+}

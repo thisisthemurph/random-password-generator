@@ -1,1 +1,158 @@
-/* No CSS *//*# sourceMappingURL=main.css.map */
+@import url("https://fonts.googleapis.com/css?family=Major+Mono+Display|Ubuntu+Mono:400,700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu Mono", mono;
+}
+
+.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100vh;
+  height: -webkit-fill-available;
+}
+
+.card .card-head {
+  line-height: 3em;
+}
+
+.card .card-head h1 {
+  font-family: "Major Mono Display", mono;
+  text-align: center;
+}
+
+.card .card-head .area-result {
+  padding: 1em;
+}
+
+.card .card-head .area-result .result {
+  font-family: "Ubuntu Mono", mono;
+  font-size: 2em;
+  word-wrap: break-word;
+  border-bottom: 1px solid black;
+}
+
+.card .card-head .area-result .result .number {
+  color: red;
+}
+
+.card .card-head .area-result .result .punctuation {
+  color: blue;
+}
+
+.card .card-head .area-result .copytext {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.card .card-body {
+  font-size: 1.4em;
+}
+
+.card .card-body .area-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 1em;
+}
+
+.card .card-body .area-options .checkbox {
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0.2em 0.2em 0.2em 0;
+}
+
+.card .card-body .area-options .checkbox input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+}
+
+.card .card-body .area-options .checkbox label {
+  padding-left: .1em;
+}
+
+.card .card-body .area-length {
+  padding: 1em;
+}
+
+.card .card-body .area-length input[type=range] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  background-color: #eeeeee;
+  cursor: pointer;
+  margin: .8em 0;
+}
+
+.card .card-body .area-length input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(16, 73, 179, 0.952);
+  cursor: col-resize;
+}
+
+.card .card-body .area-length input[type=range]::-moz-range-thumb {
+  -moz-appearance: none;
+       appearance: none;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(16, 73, 179, 0.952);
+  cursor: col-resize;
+}
+
+.card .card-body .area-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.card .card-body .area-buttons button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  padding: 1em;
+  width: 50%;
+}
+
+.toast {
+  display: none;
+}
+/*# sourceMappingURL=main.css.map */

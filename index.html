@@ -13,39 +13,52 @@
     <div class="container">
         <div class="card">
             <div class="card-head">
-                <h2>Generate Secure Password</h2>
-            </div>
-
-            <div class="card-body">
+                <h1>Generate Secure Password</h1>
                 <div class="area-result">
-                    <button id="actionbutton" class="cta">
-                        <span class="fas fa-redo-alt"></span>
-                    </button>
-                    <button id="copybutton">
-                        <span class="far fa-clone"></span>
-                    </button>
 
                     <div class="result" id="result">&nbsp;</div>
 
                     <input type="text" class="copytext" id="copytext">
                 </div>
+            </div>
+
+            <div class="card-body">
 
                 <div class="area-options">
-                    <label for="lowercase">Lowercase</label>
-                    <input type="checkbox" id="lowercase" checked>
+                    <div class="checkbox checkbox-square">
+                        <input type="checkbox" id="lowercase" checked>
+                        <label for="lowercase">Lowercase</label>
+                    </div>
 
-                    <label for="uppercase">Uppercase</label>
-                    <input type="checkbox" id="uppercase" checked>
+                    <div class="checkbox checkbox-square">
+                        <input type="checkbox" id="uppercase" checked>
+                        <label for="uppercase">Uppercase</label>
+                    </div>
 
-                    <label for="numbers">Numbers</label>
-                    <input type="checkbox" id="numbers" checked>
+                    <div class="checkbox checkbox-square">
+                        <input type="checkbox" id="numbers" checked>
+                        <label for="numbers">Numbers</label>
+                    </div>
 
-                    <label for="punctuation">Pucntuation</label>
-                    <input type="checkbox" id="punctuation" checked>
+                    <div class="checkbox checkbox-square">
+                        <input type="checkbox" id="punctuation" checked>
+                        <label for="punctuation">Pucntuation</label>
+                    </div>
                 </div>
 
                 <div class="area-length">
-                    <label for="length">Length: <input type="number" id="length" value="20"></label>
+                    <label for="length2">Length:</label>
+                    <input type="number" name="length2" id="length2" min="1" max="128" value="20">
+                    <input type="range" name="length" id="length" min="1" max="128" value="20">
+                </div>
+
+                <div class="area-buttons">
+                    <button id="copybutton">
+                        <span class="far fa-clone"></span>
+                    </button>
+                    <button id="actionbutton" class="cta">
+                        <span class="fas fa-redo-alt"></span>
+                    </button>
                 </div>
             </div>
         </div>
