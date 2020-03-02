@@ -4,6 +4,7 @@ const copyTextEle = document.getElementById('copytext');
 const toastEle = document.getElementById('toast');
 const resultEle = document.getElementById('result');
 const lengthEle = document.getElementById('length');
+const lengthEle2 = document.getElementById('length2')
 const lowercase = document.getElementById('lowercase');
 const uppercase = document.getElementById('uppercase');
 const numbers = document.getElementById('numbers');
@@ -62,8 +63,8 @@ function setPassword(password) {
         let char = password[i];
         let prevChar;
         let nextChar;
-        if (i > 0) prevChar = password[i-1];
-        if (i < password.length) nextChar = password[i+1];
+        if (i > 0) prevChar = password[i - 1];
+        if (i < password.length) nextChar = password[i + 1];
 
         if (!sameType(prevChar, char)) {
             if (isNumber(char)) {
@@ -114,14 +115,14 @@ function shuffle(array) {
  * @param {string} message The message content of the toast notification.
  * @param {boolean} error Is the toast an error message? Default: false.
  */
-function raiseToast(message, error=false) {
+function raiseToast(message, error = false) {
     toast.innerHTML = message;
     if (error)
         toastEle.className = 'toast show error';
     else
         toastEle.className = 'toast show';
 
-    setTimeout(() => { 
+    setTimeout(() => {
         toastEle.className = toastEle.className = "toast";
     }, 3000);
 }
@@ -138,7 +139,7 @@ function validateLength() {
     }
 
     if (numSelected > Number(lengthEle.value)) {
-        raiseToast('The length must be at least the number of checked options.', error=true);
+        raiseToast('The length must be at least the number of checked options.', error = true);
     }
 
     resultEle.innerHTML = '&nbsp;'
@@ -195,7 +196,7 @@ buttonEle.addEventListener('click', () => {
             methods[methods.length] = randomMethods.number;
         if (punctuation.checked)
             methods[methods.length] = randomMethods.punctuation;
-        
+
         while (methods.length < numChars) {
             let choice = Math.floor(Math.random() * methods.length);
             methods[methods.length] = methods[choice];
@@ -205,7 +206,7 @@ buttonEle.addEventListener('click', () => {
         for (let i = 0; i < methods.length; i++) {
             password += methods[i]();
         }
-        
+
         setPassword(password);
     } else {
         resultEle.innerHTML = '&nbsp;';
@@ -217,3 +218,11 @@ uppercase.addEventListener('change', validateLength);
 numbers.addEventListener('change', validateLength);
 punctuation.addEventListener('change', validateLength);
 lengthEle.addEventListener('change', validateLength);
+
+lengthEle.addEventListener('change', () => {
+    lengthEle2.value = lengthEle.value
+})
+
+lengthEle2.addEventListener('change', () => {
+    lengthEle.value = lengthEle2.value
+})
