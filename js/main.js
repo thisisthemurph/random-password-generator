@@ -117,14 +117,17 @@ function shuffle(array) {
  */
 function raiseToast(message, error = false) {
     toast.innerHTML = message;
-    if (error)
-        toastEle.className = 'toast show error';
-    else
-        toastEle.className = 'toast show';
+
+    toast.classList.add('show')
+
+    if (error) {
+        toastEle.classList.add('error');
+    }
 
     setTimeout(() => {
-        toastEle.className = toastEle.className = "toast";
-    }, 3000);
+        toastEle.classList.remove('show');
+        toastEle.classList.remove('error');
+    }, 7000);
 }
 
 /**

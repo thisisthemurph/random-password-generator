@@ -143,6 +143,46 @@ body {
 }
 
 .toast {
-  display: none;
+  position: absolute;
+  z-index: 101;
+  top: 25vh;
+  left: 0;
+  right: 0;
+  margin: 10vw;
+  color: white;
+  background-color: #333;
+  text-align: center;
+  line-height: 2.5;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 5px black;
+          box-shadow: 0 0 5px black;
+  -webkit-transform: translateX(-101vw);
+          transform: translateX(-101vw);
+}
+
+.toast.show {
+  animation: slideIn 2.5s 1s 1 ease forwards, slideIn 2.5s 4.5s 1 ease reverse;
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    -webkit-transform: translateX(-101vw);
+            transform: translateX(-101vw);
+  }
+  to {
+    -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    -webkit-transform: translateX(-101vw);
+            transform: translateX(-101vw);
+  }
+  to {
+    -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+  }
 }
 /*# sourceMappingURL=main.css.map */
