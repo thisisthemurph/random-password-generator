@@ -3,6 +3,10 @@
 $heading-font: 'Major Mono Display', mono;
 $main-font: 'Ubuntu Mono', mono;
 
+$punctuation-color:rgba(16, 73, 179);
+$number-color: rgb(209, 52, 52);
+$cta-color: $punctuation-color;
+
 * {
     padding: 0;
     margin: 0;
@@ -14,8 +18,6 @@ body {
 }
 
 .card {
-    // position: relative;
-    // overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -40,11 +42,11 @@ body {
                 border-bottom: 1px solid black;
 
                 .number {
-                    color: red;
+                    color: $number-color;
                 }
 
                 .punctuation {
-                    color: blue;
+                    color: $punctuation-color;
                 }
             }
 
@@ -90,19 +92,17 @@ body {
             input[type=range] {
                 appearance: none;
                 width: 100%;
-                background-color: #eeeeee;
+                background-color: #eee;
                 cursor: pointer;
 
                 margin: .8em 0;
-
-                // opacity: 0.7;
-                // transition: opacity .2s ease-in-out;
+                transition: opacity .2s ease-in-out;
 
                 &::-webkit-slider-thumb {
                     appearance: none;
                     width: 25px;
                     height: 25px;
-                    background-color: rgba(16, 73, 179, 0.952);
+                    background-color: $cta-color;
                     cursor: col-resize;
                 }
 
@@ -110,25 +110,31 @@ body {
                     appearance: none;
                     width: 25px;
                     height: 25px;
-                    background-color: rgba(16, 73, 179, 0.952);
+                    background-color: $cta-color;
                     cursor: col-resize;
                 }
 
-                // &:hover {
-                //     opacity: 1;
-                // }
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
 
         .area-buttons {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            padding: 0.5em;
 
             button {
                 appearance: none;
-                border: none;
+                font-size: 0.8em;
                 padding: 1em;
-                width: 50%;
+                width: 49%;
+                border: none;
+                border-radius: 4px;
+
+                color: white;
+                background: $cta-color;
             }
         }
     }

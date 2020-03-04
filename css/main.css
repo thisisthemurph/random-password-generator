@@ -46,11 +46,11 @@ body {
 }
 
 .card .card-head .area-result .result .number {
-  color: red;
+  color: #d13434;
 }
 
 .card .card-head .area-result .result .punctuation {
-  color: blue;
+  color: #1049b3;
 }
 
 .card .card-head .area-result .copytext {
@@ -102,9 +102,11 @@ body {
      -moz-appearance: none;
           appearance: none;
   width: 100%;
-  background-color: #eeeeee;
+  background-color: #eee;
   cursor: pointer;
   margin: .8em 0;
+  -webkit-transition: opacity .2s ease-in-out;
+  transition: opacity .2s ease-in-out;
 }
 
 .card .card-body .area-length input[type=range]::-webkit-slider-thumb {
@@ -112,7 +114,7 @@ body {
           appearance: none;
   width: 25px;
   height: 25px;
-  background-color: rgba(16, 73, 179, 0.952);
+  background-color: #1049b3;
   cursor: col-resize;
 }
 
@@ -121,25 +123,35 @@ body {
        appearance: none;
   width: 25px;
   height: 25px;
-  background-color: rgba(16, 73, 179, 0.952);
+  background-color: #1049b3;
   cursor: col-resize;
+}
+
+.card .card-body .area-length input[type=range]:hover {
+  opacity: 1;
 }
 
 .card .card-body .area-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5em;
 }
 
 .card .card-body .area-buttons button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  border: none;
+  font-size: 0.8em;
   padding: 1em;
-  width: 50%;
+  width: 49%;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background: #1049b3;
 }
 
 .toast {
