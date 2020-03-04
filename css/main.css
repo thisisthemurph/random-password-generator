@@ -64,24 +64,14 @@ body {
 }
 
 .card .card-body .area-options {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   padding: 1em;
 }
 
 .card .card-body .area-options .checkbox {
-  -ms-flex-preferred-size: 0;
-      flex-basis: 0;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -100,7 +90,7 @@ body {
 }
 
 .card .card-body .area-options .checkbox label {
-  padding-left: .1em;
+  padding-left: .5em;
 }
 
 .card .card-body .area-length {
