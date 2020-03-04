@@ -55,16 +55,23 @@ function sameType(a, b) {
 }
 
 /**
- * Presents the password to the user adding colorto different character types
+ * Formats the password in order to allow color styling
+ * and presents it to the user on the page
+ * 
+ * @param {string} the password to be formatted
  */
 function setPassword(password) {
     let output = '';
+
     for (let i = 0; i < password.length; i++) {
         let char = password[i];
         let prevChar;
         let nextChar;
-        if (i > 0) prevChar = password[i - 1];
-        if (i < password.length) nextChar = password[i + 1];
+
+        if (i > 0)
+            prevChar = password[i - 1];
+        if (i < password.length)
+            nextChar = password[i + 1];
 
         if (!sameType(prevChar, char)) {
             if (isNumber(char)) {
@@ -130,24 +137,6 @@ function raiseToast(message, error = false) {
     }, 7000);
 }
 
-/**
- * Validates that the chosen length of the password is equal to or
- * greater than the number of selected char types in the password.
- */
-function validateLength() {
-    let numSelected = 0;
-    for (const element of [lowercase, uppercase, numbers, punctuation]) {
-        if (element.checked)
-            numSelected++;
-    }
-
-    if (numSelected > Number(lengthEle.value)) {
-        raiseToast('The length must be at least the number of checked options.', error = true);
-    }
-
-    resultEle.innerHTML = '&nbsp;'
-}
-
 function getRandomLower() {
     return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
@@ -165,12 +154,37 @@ function getRandomPunctuation() {
     return p[Math.floor(Math.random() * p.length)];
 }
 
-const randomMethods = {
-    lower: getRandomLower,
-    upper: getRandomUpper,
-    number: getRandomNumber,
-    punctuation: getRandomPunctuation
-};
+function createPassword() {
+    const numChars = Number(lengthEle.value || 20);
+
+    if (numChars > 0) {
+        let password = '';
+
+        let methods = [];
+        if (lowercase.checked)
+            methods[methods.length] = getRandomLower;
+        if (uppercase.checked)
+            methods[methods.length] = getRandomUpper;
+        if (numbers.checked)
+            methods[methods.length] = getRandomNumber;
+        if (punctuation.checked)
+            methods[methods.length] = getRandomPunctuation;
+
+        while (methods.length < numChars) {
+            let choice = Math.floor(Math.random() * methods.length);
+            methods[methods.length] = methods[choice];
+        }
+
+        methods = shuffle(methods);
+        for (let i = 0; i < methods.length; i++) {
+            password += methods[i]();
+        }
+
+        return password;
+    } else {
+        return null;
+    }
+}
 
 copyButtonEle.addEventListener('click', () => {
     copyTextEle.value = resultEle.innerText;
@@ -184,43 +198,33 @@ copyButtonEle.addEventListener('click', () => {
     }
 });
 
+/**
+ * 
+ * Event Listeners
+ * 
+ */
+
 buttonEle.addEventListener('click', () => {
-    const numChars = Number(lengthEle.value);
-
-    if (numChars > 0) {
-        let password = '';
-
-        let methods = [];
-        if (lowercase.checked)
-            methods[methods.length] = randomMethods.lower;
-        if (uppercase.checked)
-            methods[methods.length] = randomMethods.upper;
-        if (numbers.checked)
-            methods[methods.length] = randomMethods.number;
-        if (punctuation.checked)
-            methods[methods.length] = randomMethods.punctuation;
-
-        while (methods.length < numChars) {
-            let choice = Math.floor(Math.random() * methods.length);
-            methods[methods.length] = methods[choice];
-        }
-
-        methods = shuffle(methods);
-        for (let i = 0; i < methods.length; i++) {
-            password += methods[i]();
-        }
-
-        setPassword(password);
-    } else {
-        resultEle.innerHTML = '&nbsp;';
-    }
+    const password = createPassword();
+    setPassword(password);
 });
 
-lowercase.addEventListener('change', validateLength);
-uppercase.addEventListener('change', validateLength);
-numbers.addEventListener('change', validateLength);
-punctuation.addEventListener('change', validateLength);
-lengthEle.addEventListener('change', validateLength);
+const changeElements = [
+    lengthEle,
+    lengthEle2,
+    lowercase,
+    uppercase,
+    numbers,
+    punctuation
+]
+
+// When any of the elements are changed, the password will recalculate
+changeElements.forEach(element => {
+    element.addEventListener('change', () => {
+        const password = createPassword();
+        setPassword(password);
+    });
+});
 
 lengthEle.addEventListener('change', () => {
     lengthEle2.value = lengthEle.value
